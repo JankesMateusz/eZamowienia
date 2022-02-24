@@ -61,11 +61,9 @@ public class Tender {
 
         List<String> trimmedList = new ArrayList<>();
         for(String s : this.cpvAsList){
-            s.replaceAll("\\(\\w+\\)\\w+", "");
-            System.out.println(s);
+            s = s.replaceAll("\\s\\(.*?\\)", "");
             trimmedList.add(s);
         }
-        //this.cpvAsList.forEach(t -> t.replaceAll("\\(\\w+\\)", ""));
         return trimmedList;
     }
 }
