@@ -21,6 +21,7 @@ public class Main {
         list = new ListCombiner(list, cpvList).outcome();
 
         List<Tender> tenders = new TenderFactory().getTenderList(list);
+        tenders = new TenderFilter(tenders).filterTenders();
         Collections.reverse(tenders);
 
         for(Tender t : tenders){

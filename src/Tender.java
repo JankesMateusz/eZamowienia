@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,9 +32,9 @@ public class Tender {
 
     private List<String> makeCpvList(){
 
-        String[] splitted = cpvList.split(",(?![^()]*\\))");
+        String[] split = cpvList.split(",(?![^()]*\\))");
 
-        return Arrays.stream(splitted).collect(Collectors.toList());
+        return Arrays.stream(split).collect(Collectors.toList());
     }
 
     public String getTenderInfo(){
@@ -49,5 +50,22 @@ public class Tender {
                 cpvAsList +
                 "\n-------------------------------------------------------------------------------------";
 
+    }
+
+    public List<String> getCpvNumbers(){
+
+        return trimmedCpv();
+    }
+
+    private List<String> trimmedCpv(){
+
+        List<String> trimmedList = new ArrayList<>();
+        for(String s : this.cpvAsList){
+            s.replaceAll("\\(\\w+\\)\\w+", "");
+            System.out.println(s);
+            trimmedList.add(s);
+        }
+        //this.cpvAsList.forEach(t -> t.replaceAll("\\(\\w+\\)", ""));
+        return trimmedList;
     }
 }
