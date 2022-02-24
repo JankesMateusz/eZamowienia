@@ -1,5 +1,10 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class TenderFilter {
 
+    List<Tender> tenders;
     String[] cpv = {"30120000-6", "30121000-3", "30121000-4", "30122000-5", "30121300-6",
                     "30121430-6", "30191000-4", "30200000-1", "30210000-4", "30211000-1",
                     "30211100-2", "30211200-3", "30211300-4", "30211400-5", "30211500-6",
@@ -17,6 +22,28 @@ public class TenderFilter {
                     "48517000-5", "48600000-4", "48610000-7", "48620000-0", "48611000-4",
                     "48612000-1", "48624000-8", "48700000-5", "48771000-3", "48781000-6",
                     "48990000-4", "48991000-1", "48800000-6", "48820000-2", "48821000-9",
-                    "48823000-3"};  //48517000-5 - pakiety oprogramowania informatycznego
-                                    //39162100-6 - pomoce dydaktyczne
+                    "48823000-3", "39162100-6"};
+
+    List<String> cpvList;
+
+    public TenderFilter(List<Tender> tenders){
+
+        this.tenders = tenders;
+        this.cpvList = Arrays.asList(cpv);
+    }
+
+    public List<Tender> filterTenders(){
+
+        List<Tender> filtered = new ArrayList<>();
+
+        for (Tender tender : tenders) {
+
+            if(tender.getCpvNumbers()
+                    .stream()
+                    .anyMatch(t -> cpvList.contains(t))){
+                filtered.add(tender);
+            }
+        }
+        return filtered;
+    }
 }

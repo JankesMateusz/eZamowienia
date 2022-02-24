@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String... args) throws Exception {
 
-        String date = "2022-02-23";          /*   PROBLEM Z ASC <--- */
+        String date = "2022-02-24";          /*   PROBLEM Z ASC <--- */
 
         String csv_url = "https://ezamowienia.gov.pl/mo-board/api/v1/Board/GetSearchNoticesListReport?noticeType=ContractNotice&isTenderAmountBelowEU=true&" +
                 "publicationDateFrom=" + date + "T00:00:00.000Z&orderType=Delivery&SortingColumnName=PublicationDate&SortingDirection=DESC&reportType=0";
@@ -21,6 +21,7 @@ public class Main {
         list = new ListCombiner(list, cpvList).outcome();
 
         List<Tender> tenders = new TenderFactory().getTenderList(list);
+        tenders = new TenderFilter(tenders).filterTenders();
         Collections.reverse(tenders);
 
         for(Tender t : tenders){
