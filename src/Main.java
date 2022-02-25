@@ -8,9 +8,9 @@ public class Main {
     public static void main(String... args) throws Exception {
 
         String date = "";          /*   PROBLEM Z ASC <--- */
-//        if(args.length > 0){
-//            date = args[0];
-//        }
+        if(args.length > 0){
+            date = args[0];
+        }
 
         System.out.println("Filter? y/n");
         Scanner scanner = new Scanner(System.in);
@@ -44,6 +44,7 @@ public class Main {
         System.out.println("TOTAL: " + tenders.size());
 
 
+        System.out.println("\n Press any key to quit...");
         scanner.nextLine();
     }
 }
