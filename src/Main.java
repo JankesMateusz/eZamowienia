@@ -7,10 +7,7 @@ public class Main {
 
     public static void main(String... args) throws Exception {
 
-        String date = "";          /*   PROBLEM Z ASC <--- */
-        if(args.length > 0){
-            date = args[0];
-        }
+        String date = "";
 
         System.out.println("Filter? y/n");
         Scanner scanner = new Scanner(System.in);
@@ -19,7 +16,7 @@ public class Main {
         String csv_url = "https://ezamowienia.gov.pl/mo-board/api/v1/Board/GetSearchNoticesListReport?noticeType=ContractNotice&isTenderAmountBelowEU=true&" +
                 "publicationDateFrom=" + date + "T00:00:00.000Z&orderType=Delivery&SortingColumnName=PublicationDate&SortingDirection=DESC&reportType=0";
 
-        DataGetter c = new DataGetter();    // to generuje listę zamówień
+        DataGetter c = new DataGetter();
 
         // Initial List
         List<String> list = c.getCSVData(csv_url);
@@ -42,7 +39,6 @@ public class Main {
             System.out.println("LP: " + (tenders.indexOf(t) + 1) + "\n" + t.getTenderInfo());
         }
         System.out.println("TOTAL: " + tenders.size());
-
 
         System.out.println("\n Press any key to quit...");
         scanner.nextLine();
