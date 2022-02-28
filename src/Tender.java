@@ -49,7 +49,6 @@ public class Tender {
                 "\n\tSzczegóły: " + link + "\nCPV: \n" +
                 cpvAsList +
                 "\n-------------------------------------------------------------------------------------";
-
     }
 
     public List<String> getCpvNumbers(){
