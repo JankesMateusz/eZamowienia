@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String... args) throws Exception {
 
-        String date = "";
+        String date = "2022-02-28";
 
         System.out.println("Filter? y/n");
         Scanner scanner = new Scanner(System.in);
@@ -38,10 +38,8 @@ public class Main {
         for(Tender t : tenders){
             System.out.println("LP: " + (tenders.indexOf(t) + 1) + "\n" + t.getTenderInfo());
         }
-        System.out.println("TOTAL: " + tenders.size());
-
-        System.out.println("\n Press any key to quit...");
-        scanner.nextLine();
+        System.out.println("TOTAL: " + tenders.size() + " of " + list.size());
+        
     }
 }
 
