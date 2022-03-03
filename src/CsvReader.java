@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CsvReader {
@@ -11,7 +11,7 @@ public class CsvReader {
         String csv_url = "https://ezamowienia.gov.pl/mo-board/api/v1/Board/GetSearchNoticesListReport?noticeType=ContractNotice&isTenderAmountBelowEU=true&" +
                 "publicationDateFrom=" + date + "T00:00:00.000Z&orderType=Delivery&SortingColumnName=PublicationDate&SortingDirection=DESC&reportType=0";
 
-        List<String> orders = new ArrayList<>();
+        List<String> orders = new LinkedList<>();
         URL link = new URL(csv_url);
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(link.openStream())
