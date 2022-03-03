@@ -1,4 +1,3 @@
-import java.util.List;
 
 public class Main {
 
@@ -6,9 +5,7 @@ public class Main {
 
         String date = "2022-03-03";
 
-        List<String> cpvFromFileList = new CpvFileReader().readFile();
-        Controller c = new Controller(date, cpvFromFileList);
+        Controller c = new Controller(date, new CpvFileReader().readFile());
         c.display();
     }
 }
-
