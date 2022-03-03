@@ -7,13 +7,16 @@ public class Controller {
     String date;
     List<String> orders;
     List<Tender> tenders;
+    List<String> cpvList;
 
-    public Controller(String date) throws Exception{
+    public Controller(String date, List<String> cpvList) throws Exception{
 
         this.date = date;
+        this.cpvList = cpvList;
         this.orders = new CsvReader().getCSVData(date);
         this.orders = new ListCombiner(orders, new CpvFromJSONExtractor().getCPVList(orders, date)).outcome();
         this.tenders = new TenderFactory().getTenderList(orders);
+
     }
 
     public void display(){
@@ -24,7 +27,7 @@ public class Controller {
 
         if(answer.equals("y")){
 
-            tenders = new TenderFilter(tenders).filterTenders();
+            tenders = new TenderFilter(tenders, cpvList).filterTenders();
         }
 
         Collections.reverse(tenders);
